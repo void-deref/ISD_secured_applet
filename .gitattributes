@@ -1,0 +1,4 @@
+libraries* linguist-vendored
+*.html linguist-detectable=false
+*.bat linguist-generated=true
+*.xml linguist-generated=false

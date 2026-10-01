@@ -1,0 +1,5 @@
+OK: org.globalplatform.AdministrationSession Interface
+OK: org.globalplatform.AdminSessionListener Interface
+OK: org.globalplatform.GPSystem Field FAMILY_COAP_ADMINISTRATION
+OK: org.globalplatform.GPSystem Field FAMILY_CRYPTO_SERVICE_PROVIDER
+OK: org.globalplatform.GPSystem Field FAMILY_GLOBAL_MASTER_FILE

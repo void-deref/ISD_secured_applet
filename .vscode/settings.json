@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "libraries/jc304_kit/lib/api_classic.jar",
+        "libraries/gpapi-globalplatform.jar",
+        "libraries/GP API 1.8/gpapi-globalplatform.jar"
+    ]
+}

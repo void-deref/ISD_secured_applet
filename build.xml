@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SD secured Applet" default="build-applet" basedir=".">
+
+	<!-- <get src="https://github.com/martinpaljak/ant-javacard/releases/latest/download/ant-javacard.jar" dest="." skipexisting="true"/> -->
+	<taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="ant-javacard.jar"/>
+
+    <description>The applet that utilizes it's associated SD secure channel facility</description>
+
+    <target name="build-applet" description="generate the distribution">
+        <mkdir dir="out"/>
+        <tstamp/>
+        <javacard jckit="./libraries/jc304_kit">
+            <cap aid="A0:00:00:00:86" output="out/sd_secured_applet.cap" sources="src" classes="./libraries/GP API 1.5" version="1.0">
+                <applet class="fun.sd_secured_applet.Main" aid="A0:00:00:00:86:53:44:20:53:65:63:75:72:65:64"/>
+
+                <import exps="libraries/GP API 1.5"/>
+                <!-- <import exps="./libraries/GP API 1.8/exports23" jar="./libraries/GP API 1.8/gpapi-globalplatform.jar"/> -->
+            </cap>
+        </javacard>
+        
+    </target>
+
+    <target name="clean" description="Delete previously built applet">
+        <delete dir="out/"/>
+    </target>
+
+</project>
