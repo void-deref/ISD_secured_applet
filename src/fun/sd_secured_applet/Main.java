@@ -112,8 +112,9 @@ Main extends Applet
         scp02.unwrap(buffer, ISO7816.OFFSET_CLA, (short)(apdu_len + 5));
 
         Util.arrayCopyNonAtomic(secret, _00, buffer, ISO7816.OFFSET_CDATA, secret_len);
+
+        secret_len = scp02.wrap(buffer, ISO7816.OFFSET_CDATA, (short)(secret_len + 2));
         apdu.setOutgoingAndSend(ISO7816.OFFSET_CDATA, secret_len);
-        
     }
 
     /* SCPcommands method
