@@ -1,4 +1,4 @@
-package fun.sd_secured_applet;
+package fun.isd_secured_applet;
 
 import javacard.framework.APDU;
 import javacard.framework.Applet;
@@ -14,7 +14,7 @@ import org.globalplatform.GPSystem;
 import org.globalplatform.SecureChannel;
 
 public class
-Main extends Applet
+ISD_secured_applet extends Applet
 {   
     private static final short SW_ARRAY_INDEX_OUT_OF_RANGE = (short)0x6703;
 	private static final short SW_CRYPTO_EXCEPTION         = (short)0x6600;
@@ -40,6 +40,7 @@ Main extends Applet
      * 14 xx [department]
      * 15 xx [division]
      * 16 xx [position]
+     * 17 xx [expire date]
      */
     private short  person_info_len = 0;
     private byte[] person_info     = null;
@@ -49,7 +50,7 @@ Main extends Applet
     private SecureChannel scp02;
     
     public
-    Main()
+    ISD_secured_applet()
     {
         person_info = new byte[_255];
         // NOTE: allocating cryptography objects at instantiation stage leads to SW 6F00.
@@ -59,7 +60,7 @@ Main extends Applet
 	install(byte[] buffer, short offset, byte length)
 	{
 		length = buffer[offset++]; // the the length of instance AID. The 'offset' will point to the first byte of AID
-        new Main().register(buffer, offset, length);
+        new ISD_secured_applet().register(buffer, offset, length);
 	}
 
     @Override

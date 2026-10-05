@@ -10,8 +10,8 @@
         <mkdir dir="out"/>
         <tstamp/>
         <javacard jckit="./libraries/jc304_kit">
-            <cap aid="A0:00:00:00:86" output="out/sd_secured_applet.cap" sources="src" classes="./libraries/GP API 1.5" version="1.0">
-                <applet class="fun.sd_secured_applet.Main" aid="A0:00:00:00:86:53:44:20:53:65:63:75:72:65:64"/>
+            <cap aid="A0:00:00:00:86" output="out/isd_secured_applet.cap" sources="src" classes="./libraries/GP API 1.5" version="1.0">
+                <applet class="fun.isd_secured_applet.ISD_secured_applet" aid="A0:00:00:00:86:49:53:44:20:53:65:63:75:72:65:64"/>
 
                 <import exps="libraries/GP API 1.5"/>
                 <!-- <import exps="./libraries/GP API 1.8/exports23" jar="./libraries/GP API 1.8/gpapi-globalplatform.jar"/> -->
