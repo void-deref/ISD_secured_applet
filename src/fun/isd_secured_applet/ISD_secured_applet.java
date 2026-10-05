@@ -131,6 +131,13 @@ ISD_secured_applet extends Applet
         apdu_len = scp02.unwrap(buffer, ISO7816.OFFSET_CLA, (short)(apdu_len + 5));
         apdu_len -= 5;
 
+        byte sec_level = scp02.getSecurityLevel();
+        
+        // enforce applying C_DECRYPTION security level
+        if ((sec_level & SecureChannel.C_DECRYPTION) != SecureChannel.C_DECRYPTION) {
+            ISOException.throwIt(ISO7816.SW_SECURITY_STATUS_NOT_SATISFIED);
+        }
+
         if (aes_key == null) {
             aes_key = (AESKey)KeyBuilder.buildKey(KeyBuilder.TYPE_AES, KeyBuilder.LENGTH_AES_128, false);
             aes_cipher = Cipher.getInstance(Cipher.ALG_AES_CBC_ISO9797_M2, false);
@@ -145,6 +152,13 @@ ISD_secured_applet extends Applet
     {
         person_info_len = scp02.unwrap(buffer, ISO7816.OFFSET_CLA, (short)(apdu_len + 5));
         person_info_len -= 5;
+
+        byte sec_level = scp02.getSecurityLevel();
+
+        // enforce applying C_DECRYPTION security level
+        if ((sec_level & SecureChannel.C_MAC) < SecureChannel.C_MAC) {
+            ISOException.throwIt(ISO7816.SW_SECURITY_STATUS_NOT_SATISFIED);
+        }
         Util.arrayCopyNonAtomic(buffer, ISO7816.OFFSET_CDATA, person_info, _00, person_info_len);
         return _00;
     }
